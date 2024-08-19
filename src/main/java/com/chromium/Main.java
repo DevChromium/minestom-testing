@@ -1,5 +1,6 @@
 package com.chromium;
 
+import com.chromium.events.player.PlayerEventHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentBuilder;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -37,21 +38,8 @@ public class Main {
            player.setRespawnPoint(new Pos(0, 42, 0));
         });
 
-        EventNode<PlayerEvent> playerEventNode = EventNode.type("player-listener", EventFilter.PLAYER);
 
-        playerEventNode.addListener(PlayerChatEvent.class, event -> {
-            final Player player = event.getPlayer();
-            final String message = event.getMessage();
-            final Component component = Component.empty()
-                    .append(Component.text("> "))
-                    .append(Component.text(player.getUsername(), NamedTextColor.LIGHT_PURPLE))
-                    .append(Component.text(" "))
-                    .append(Component.text(message, NamedTextColor.WHITE));
-
-            event.setChatFormat((e) -> component);
-        });
-        globalEventHandler.addChild(playerEventNode);
-
+        globalEventHandler.addChild(new PlayerEventHandler().eventNode());
 
         // Mojang Auth
         MojangAuth.init();
