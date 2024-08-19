@@ -3,7 +3,6 @@ package com.chromium.events.player;
 
 import com.chromium.core.interfaces.EventHandler;
 import net.minestom.server.event.EventFilter;
-import net.minestom.server.event.EventListener;
 import net.minestom.server.event.EventNode;
 import net.minestom.server.event.trait.PlayerEvent;
 

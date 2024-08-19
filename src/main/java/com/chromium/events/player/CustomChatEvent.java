@@ -8,8 +8,6 @@ import net.minestom.server.event.player.PlayerChatEvent;
 import org.jetbrains.annotations.NotNull;
 
 public class CustomChatEvent implements EventListener<PlayerChatEvent> {
-
-
     @Override
     public @NotNull Class<PlayerChatEvent> eventType() {
         return PlayerChatEvent.class;
